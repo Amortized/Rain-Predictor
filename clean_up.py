@@ -44,7 +44,12 @@ def clean(inp_file, output_file, train):
   
   with open(inp_file, "r") as f:
 
-    header = f.readline().strip().split(',')
+    header = f.readline().strip().split(',');
+    for h in range(0, len(header)):
+    	if h == len(header) - 1:
+    		file_output.write(str(header[h]) + "\n");
+    	else:
+    	  file_output.write(str(header[h]) + ",");
 
     count  = 0;
     for line in f:
