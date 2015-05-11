@@ -138,6 +138,7 @@ def generateFeatures(all_radar_features):
 			observations = [r[i] for r in all_radar_features];	 
 			features.append(round(np.mean(observations), 2)); 
 			features.append(round(np.std(observations), 2)); 
+
 		elif i == 7:
 			#HydrometeorType
 			#For each of the HydrometeorType, compute the weighted mean of the counts
@@ -189,7 +190,7 @@ def generateFeatures(all_radar_features):
 				features.append("NaN");
 				features.append("NaN");
 
-
+	
 	return features;
 		
 
@@ -207,7 +208,7 @@ def read(inp_file, train):
 	data = [ (lines[i], train) for i in range(0, len(lines)) ];
 
 	#Create a Thread pool.
-	pool 		 = Pool(4);
+	pool 		 = Pool(8);
 	results 	 = pool.map( preprocess_wrapper, data );
 	pool.close();
 	pool.join();
